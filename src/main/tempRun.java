@@ -20,6 +20,7 @@ public class tempRun {
         list.add(29);
         System.out.println(list);
         list.add(0,345);
+        list.add(4,100);
         System.out.println(list);
         SortedIntList list2 = new SortedIntList(5);
         list2.add(12);

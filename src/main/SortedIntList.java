@@ -29,7 +29,7 @@ public class SortedIntList extends ArrayIntList {
     }
 
     public void add(int value) {
-        if (this.size == this.array.length) {
+        if (super.size() == getArray().length) {
             super.resize();
         }
         if (unique) {
@@ -51,41 +51,41 @@ public class SortedIntList extends ArrayIntList {
 
     public void setUnique(boolean unique) {
         if (!this.unique && unique) {
-            int[] temp = new int[this.size];
+            int[] temp = new int[super.size()];
             int tempIndex = 0;
-            for (int i = 0; i < this.size; i++) {
-                if (!arrayContains(temp, this.array[i])) {
-                    temp[tempIndex] = this.array[i];
+            for (int i = 0; i < super.size(); i++) {
+                if (!arrayContains(temp, getArray()[i])) {
+                    temp[tempIndex] = getArray()[i];
                     tempIndex++;
                 }
             }
-            this.array = temp;
-            this.size = tempIndex;
+            setArray(temp);
+            super.setSize(tempIndex);
         }
         this.unique = unique;
     }
 
     public int max() {
-        if (this.size == 0) {
+        if (super.size() == 0) {
             throw new NoSuchElementException("the list is empty");
         } else {
-            return this.array[this.size - 1];
+            return getArray()[super.size() - 1];
         }
     }
 
     public int min() {
-        if (this.size == 0) {
+        if (super.size() == 0) {
             throw new NoSuchElementException("the list is empty");
         } else {
-            return this.array[0];
+            return getArray()[0];
         }
     }
 
     public String toString() {
         String result = "S:[";
-        for (int i = 0; i < this.size; i++) {
-            result += this.array[i];
-            if (i < this.size - 1) {
+        for (int i = 0; i < super.size(); i++) {
+            result += getArray()[i];
+            if (i < super.size() - 1) {
                 result += ", ";
             }
         }
@@ -94,25 +94,15 @@ public class SortedIntList extends ArrayIntList {
     }
 
     public int indexOf(int value) {
-        return Arrays.binarySearch(this.array, 0, this.size, value);
+        return Arrays.binarySearch(getArray(), 0, super.size(), value);
     }
 
     private void sortedAdd(int value) {
-        for (int i = 0; i < super.size() + 1; i++) {
-            if (value <= this.array[0]) {
-                super.add(0, value);
-                break;
-            }
-            if (value >= this.array[i]) {
-                if (value < this.array[i + 1] || this.size == 0 || i == this.size - 1) {
-                    if (this.size == 0) {
-                        super.add(value);
-                    } else {
-                        super.add(i + 1, value);
-                    }
-                    break;
-                }
-            }
+        int index = Arrays.binarySearch(getArray(), 0, super.size(), value);
+        if (index >= 0){
+            super.add(index,value);
+        }else{
+            super.add(-(index+1),value);
         }
     }
 
