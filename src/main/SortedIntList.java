@@ -14,6 +14,10 @@ public class SortedIntList extends ArrayIntList {
         super();
     }
 
+    /**
+     * unique setting constructor
+     * @param unique if the array need to be unique
+     */
     public SortedIntList(boolean unique) {
         super();
         this.unique = unique;
