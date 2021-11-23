@@ -5,6 +5,9 @@ import java.util.NoSuchElementException;
 
 public class SortedIntList extends ArrayIntList {
 
+    /**
+     * the unique status of SortedList
+     */
     private boolean unique = false;
 
     public SortedIntList() {
