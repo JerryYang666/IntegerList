@@ -98,21 +98,11 @@ public class SortedIntList extends ArrayIntList {
     }
 
     private void sortedAdd(int value) {
-        for (int i = 0; i < super.size() + 1; i++) {
-            if (value <= getArray()[0]) {
-                super.add(0, value);
-                break;
-            }
-            if (value >= getArray()[i]) {
-                if (value < getArray()[i + 1] || super.size() == 0 || i == super.size() - 1) {
-                    if (super.size() == 0) {
-                        super.add(value);
-                    } else {
-                        super.add(i + 1, value);
-                    }
-                    break;
-                }
-            }
+        int index = Arrays.binarySearch(getArray(), 0, super.size(), value);
+        if (index >= 0){
+            super.add(index,value);
+        }else{
+            super.add(-(index+1),value);
         }
     }
 
