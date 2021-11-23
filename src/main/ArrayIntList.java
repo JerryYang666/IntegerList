@@ -5,12 +5,12 @@ public class ArrayIntList {
     /**
      * the internal array for storing the elements
      */
-    protected int[] array;
+    private int[] array;
 
     /**
      * the number of elements in the list
      */
-    protected int size = 0;
+    private int size = 0;
 
     /**
      * default constructor, capacity is 10
