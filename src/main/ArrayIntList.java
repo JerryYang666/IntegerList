@@ -115,6 +115,14 @@ public class ArrayIntList {
     }
 
     /**
+     * set size
+     * @param size the new size of the list
+     */
+    protected void setSize(int size) {
+        this.size = size;
+    }
+
+    /**
      * convert the list to string
      * @return the string form of the list
      */
@@ -180,6 +188,22 @@ public class ArrayIntList {
         if (index < min || index > max) {
             throw new IndexOutOfBoundsException("Index out of bounds");
         }
+    }
+
+    /**
+     * return the internal array
+     * @return return the internal array
+     */
+    protected int[] getArray(){
+        return this.array;
+    }
+
+    /**
+     * set the internal array
+     * @param array the array needed to be set
+     */
+    protected void setArray(int[] array){
+        this.array = array;
     }
 
     /**
