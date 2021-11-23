@@ -194,7 +194,7 @@ public class ArrayIntList {
      * return the internal array
      * @return return the internal array
      */
-    protected int[] getArray(){
+    public int[] getArray(){
         return this.array;
     }
 
